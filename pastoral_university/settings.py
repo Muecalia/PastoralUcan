@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'corsheaders',
     'address_api',
+    'general_api',
 ]
 
 MIDDLEWARE = [

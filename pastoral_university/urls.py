@@ -36,7 +36,7 @@ urlpatterns = [
     #path('api/provider/', include('provider_api.urls'), name='provider'),
     #path('api/agreement/', include('agreement_api.urls'), name='agreement'),
     #path('api/religion/', include('religion_api.urls'), name='religion'),
-    #path('api/general/', include('general_api.urls'), name='general'),
+    path('api/general/', include('general_api.urls'), name='general'),
     #path('api/pastoral_member/', include('pastoral_member_api.urls'), name='pastoral_member'),
     #path('api/agreement_project/', include('agreement_project_api.urls'), name='agreement_project'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
