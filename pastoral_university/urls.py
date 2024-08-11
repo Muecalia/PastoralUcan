@@ -33,12 +33,13 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/address/', include('address_api.urls'), name='address'),
-    #path('api/provider/', include('provider_api.urls'), name='provider'),
-    #path('api/agreement/', include('agreement_api.urls'), name='agreement'),
-    #path('api/religion/', include('religion_api.urls'), name='religion'),
+    path('api/provider/', include('provider_api.urls'), name='provider'),
+    path('api/agreement/', include('agreement_api.urls'), name='agreement'),
+    path('api/religion/', include('religion_api.urls'), name='religion'),
     path('api/general/', include('general_api.urls'), name='general'),
+    path('api/institution/', include('institution_api.urls'), name='institution'),
     #path('api/pastoral_member/', include('pastoral_member_api.urls'), name='pastoral_member'),
-    #path('api/agreement_project/', include('agreement_project_api.urls'), name='agreement_project'),
+    path('api/agreement_project/', include('agreement_project_api.urls'), name='agreement_project'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
 ]
 

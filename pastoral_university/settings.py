@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'address_api',
     'general_api',
+    'religion_api',
+    'institution_api',
+    'agreement_api',
+    'agreement_project_api',
+    'provider_api',
 ]
 
 MIDDLEWARE = [
