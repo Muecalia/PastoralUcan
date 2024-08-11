@@ -14,6 +14,10 @@ class ErrorMessage:
         return f'Erro ao eliminar o {objecto} com o código {id}. Message: {msn}'
     
     
+    # ERROR
+    def error_size(self, objecto: str) -> str:
+        return f'Erro {objecto} não válido.'
+    
     # EXISTS
     def exists(self, objecto: str) -> str:
         return f'{objecto} já se encontra em uso.'
