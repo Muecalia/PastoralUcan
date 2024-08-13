@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'provider_api',
     'pastoral_member_api', 
     'pastoral_group_api',
+    'pastoral_member_has_group_api',
 ]
 
 MIDDLEWARE = [

@@ -38,6 +38,7 @@ class PastoralMember(models.Model):
     state = models.BooleanField(default=False)
     street = models.CharField(max_length=30, null=True, blank=True)
     house_number = models.CharField(max_length=10, null=True, blank=True)
+    #groups = models.ManyToManyField(PastoralGroup, through='PastoralMemberHasGroup')
     created_date = models.DateTimeField(default=timezone.now(), auto_created=True)
     updated_date = models.DateTimeField(null=True, blank=True)
     

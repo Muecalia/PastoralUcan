@@ -5,6 +5,7 @@ from religion_api.models import Religion, Sacrament
 from general_api.models import AcademicLevel, School, University
 from utils import code_error, message_error
 from django.utils import timezone, dateparse
+from pastoral_member_has_group_api.serializers import SavePastoralMemberHasGroupSerializer
 
 
 class ListPastoralMemberSerializer(serializers.ModelSerializer):
@@ -37,13 +38,23 @@ class FindPastoralMemberSerializer(serializers.ModelSerializer):
         #now.strftime("%d/%m/%Y, %H:%M:%S") myDate.strftime('%m/%d/%Y')
 
 
-class SavePastoralMemberSerializer(serializers.ModelSerializer):    
-    class Meta:
+class GroupsSerializer(serializers.Serializer):
+    group = serializers.IntegerField()
+
+class SavePastoralMemberSerializer(serializers.Serializer):
+    first_name = serializers.CharField(max_length=30)
+    last_name = serializers.CharField(max_length=50)
+    email = serializers.EmailField(max_length=100)
+    phone = serializers.CharField(max_length=20)
+    groups = GroupsSerializer(many=True, write_only=True)
+    '''class Meta:
         model = PastoralMember
-        fields = ('first_name', 'last_name', 'email','phone')
+        fields = ('first_name', 'last_name', 'email','phone')'''
     
     def validate(self, attrs):
         error_message = message_error.ErrorMessage()
+        if len(attrs['groups']) <= 0:
+            raise serializers.ValidationError(error_message.error_size('Grupos da Pastoral'))
         if len(attrs['first_name']) <= 0:
             raise serializers.ValidationError(error_message.error_size('Primeiro nome'))
         if len(attrs['last_name']) <= 0:
@@ -56,7 +67,8 @@ class SavePastoralMemberSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(error_message.exists('phone'))
         return attrs
         
-    def create(self, validated_data):        
+    def create(self, validated_data):
+        groups = validated_data['groups']       
         data = {
             'first_name': validated_data['first_name'],
             'last_name': validated_data['last_name'],
@@ -65,7 +77,20 @@ class SavePastoralMemberSerializer(serializers.ModelSerializer):
         }
         
         pastoral_member = PastoralMember.objects.create(**data)
-        
+        #print(f'id: {pastoral_member.id}\npk: {pastoral_member.pk}')
+        print(len(groups))
+        for item in groups:
+            #print(item['group'])
+            member_group = {
+                'pastoral_member': pastoral_member.id,
+                'pastoral_group': item['group']
+            }
+
+            member_group_serializer = SavePastoralMemberHasGroupSerializer(data=member_group)
+            
+            if member_group_serializer.is_valid():
+                member_group_serializer.save()
+            print(f'Erro: {member_group_serializer.errors}')
         return pastoral_member
 
 
