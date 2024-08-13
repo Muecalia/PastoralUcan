@@ -94,6 +94,8 @@ class UpdatePastoralMemberSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(error_message.error_size('Telefone'))
         if len(attrs['email']) <= 0:
             raise serializers.ValidationError(error_message.error_size('email'))
+        if (len(attrs['birth_date']) > 0) &  (not dateparse.parse_datetime(attrs['birth_date'])):
+            raise serializers.ValidationError(error_message.date_formate('Data de nascimento'))
         
         return attrs
     
@@ -119,3 +121,4 @@ class UpdatePastoralMemberSerializer(serializers.ModelSerializer):
         instance.save()
         
         return instance
+

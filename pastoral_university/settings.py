@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'agreement_project_api',
     'provider_api',
     'pastoral_member_api', 
+    'pastoral_group_api',
 ]
 
 MIDDLEWARE = [

@@ -17,6 +17,8 @@ class ErrorMessage:
     # ERROR
     def error_size(self, objecto: str) -> str:
         return f'Erro {objecto} não válido.'
+    def date_formate(self, objecto: str) -> str:
+        return f'Erro formato da {objecto} não válido.'
     
     # EXISTS
     def exists(self, objecto: str) -> str:
