@@ -19,6 +19,8 @@ class ErrorMessage:
         return f'Erro {objecto} não válido.'
     def date_formate(self, objecto: str) -> str:
         return f'Erro formato da {objecto} não válido.'
+    def date_error(self, date_start: str, date_end: str) -> str:
+        return f'Erro a data inicial {date_start} não pode ser maior que a data final {date_end}.'
     
     # EXISTS
     def exists(self, objecto: str) -> str:

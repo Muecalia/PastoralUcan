@@ -35,7 +35,7 @@ class PastoralMember(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE, null=True, blank=True)
     university = models.ForeignKey(University, on_delete=models.CASCADE, null=True, blank=True)
     county = models.ForeignKey(County, on_delete=models.CASCADE, null=True, blank=True)
-    state = models.BooleanField(default=False)
+    state = models.BooleanField(default=True)
     street = models.CharField(max_length=30, null=True, blank=True)
     house_number = models.CharField(max_length=10, null=True, blank=True)
     #groups = models.ManyToManyField(PastoralGroup, through='PastoralMemberHasGroup')
@@ -46,3 +46,5 @@ class PastoralMember(models.Model):
         db_table = 'tb_pastoral_member'
         ordering = ('last_name', 'first_name')
     
+    def full_name(self) -> str:
+        return f'{self.first_name} {self.last_name}'

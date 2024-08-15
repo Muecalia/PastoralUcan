@@ -69,6 +69,6 @@ class UpdateAgreementSerializer(serializers.ModelSerializer):
             instance.save()
         
             return instance
-        return None
+        return institution_serializer.errors
 
 

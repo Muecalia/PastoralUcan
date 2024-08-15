@@ -32,10 +32,9 @@ class SavePastoralMemberHasGroupSerializer(serializers.ModelSerializer):
         group = PastoralMemberHasGroup.objects.create(**data)
         return group
     
-    
 
 class ListPastoralMemberHasGroupSerializer(serializers.ModelSerializer):
-    pastoral_member = serializers.SlugRelatedField(queryset=PastoralMember.objects.all(), slug_field=('first_name'))
+    pastoral_member = serializers.SlugRelatedField(queryset=PastoralMember.objects.all(), slug_field='first_name')
     pastoral_group = serializers.SlugRelatedField(queryset=PastoralGroup.objects.all(), slug_field='name')
     
     class Meta:

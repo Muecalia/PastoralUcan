@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'pastoral_member_api', 
     'pastoral_group_api',
     'pastoral_member_has_group_api',
+    'chaplain_api',
+    'pastoral_coordination_api',
 ]
 
 MIDDLEWARE = [
@@ -164,7 +166,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
     },

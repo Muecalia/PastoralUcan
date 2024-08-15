@@ -11,7 +11,7 @@ Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
-    1. Import the include() function: from django.urls import include, path
+    1. Import the include() function: from django.urls import include, path 
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
@@ -37,9 +37,12 @@ urlpatterns = [
     path('api/agreement/', include('agreement_api.urls'), name='agreement'),
     path('api/religion/', include('religion_api.urls'), name='religion'),
     path('api/general/', include('general_api.urls'), name='general'),
+    path('api/chaplain/', include('chaplain_api.urls'), name='chaplain'),
     path('api/institution/', include('institution_api.urls'), name='institution'),
     path('api/pastoral_group/', include('pastoral_group_api.urls'), name='pastoral_group'),
     path('api/pastoral_member/', include('pastoral_member_api.urls'), name='pastoral_member'),
+    path('api/pastoral_coordination/', include('pastoral_coordination_api.urls'), name='pastoral_coordination'),
+    path('api/pastoral_member_group/', include('pastoral_member_has_group_api.urls'), name='pastoral_member_group'),
     path('api/agreement_project/', include('agreement_project_api.urls'), name='agreement_project'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
 ]

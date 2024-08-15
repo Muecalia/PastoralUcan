@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from . import views as v
+from .views import DeletePastoralMemberHasGroupView, ListPastoralMemberHasGroupView, SavePastoralMemberHasGroupView, FindPastoralMemberHasGroupByGroupView, FindPastoralMemberHasGroupByMemberView
 
 urlpatterns = [
-    path('country', v.CountryView.as_view(), name='country'),
-    path('province', v.ProvinceView.as_view(), name='province'),
-    path('county', v.CountyView.as_view(), name='county'),
+    path('delete_pastoral_member_group', DeletePastoralMemberHasGroupView.as_view(), name='delete_pastoral_member_group'),
+    path('list_pastoral_member_group', ListPastoralMemberHasGroupView.as_view(), name='list_pastoral_member_group'),
+    path('save_pastoral_member_group', SavePastoralMemberHasGroupView.as_view(), name='save_pastoral_member_group'),
+    path('find_pastoral_member_group_by_group/<int:group_id>', FindPastoralMemberHasGroupByGroupView.as_view(), name='find_pastoral_member_group_by_group'),
+    path('find_pastoral_member_group_by_member/<int:member_id>', FindPastoralMemberHasGroupByMemberView.as_view(), name='find_pastoral_member_group_by_member'),
 ]
