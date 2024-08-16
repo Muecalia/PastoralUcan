@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'pastoral_member_has_group_api',
     'chaplain_api',
     'pastoral_coordination_api',
+    'pastoral_activity_api',
+    'pastoral_activity_member_api',
+    'pastoral_visitor_api',
 ]
 
 MIDDLEWARE = [

@@ -15,7 +15,7 @@ class AgreementProject(models.Model):
     description_project = models.CharField(max_length=500, null=False, blank=False)
     #state_project = models.BooleanField(default=True)
     #state_project = models.IntegerField(choices=StateProjectEnum, default=StateProjectEnum.Pending)
-    state_project = models.IntegerField(default=StateProjectEnum.Pending)
+    state_project = models.IntegerField(default=StateProjectEnum.Pending.value)
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(blank=True, null=True)
     agreement = models.ForeignKey(Agreement, on_delete=models.CASCADE)

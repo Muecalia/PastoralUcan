@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import PastoralMember
+from .models import PastoralMember, GenderEnum, CivilStateEnum
 from address_api.models import Country, County
 from religion_api.models import Religion, Sacrament
 from general_api.models import AcademicLevel, School, University
@@ -110,7 +110,13 @@ class UpdatePastoralMemberSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_date','updated_date', 'state')
     
     def validate(self, attrs):
-        error_message = message_error.ErrorMessage()     
+        error_message = message_error.ErrorMessage()
+        genders = (item for item in list(GenderEnum) if item.value == attrs['gender'])
+        if len(list(genders)) <= 0:
+            raise serializers.ValidationError(error_message.not_found('Genero'))
+        civil_states = (item for item in list(CivilStateEnum) if item.value == attrs['civil_state'])
+        if len(list(civil_states)) <= 0:
+            raise serializers.ValidationError(error_message.not_found('Estado Cívil'))
         if len(attrs['first_name']) <= 0:
             raise serializers.ValidationError(error_message.error_size('Primeiro nome'))
         if len(attrs['last_name']) <= 0:
