@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/religion/', include('religion_api.urls'), name='religion'),    
     path('api/chaplain/', include('chaplain_api.urls'), name='chaplain'),
     path('api/agreement/', include('agreement_api.urls'), name='agreement'),
+    path('api/publication/', include('publication_api.urls'), name='publication'),
     path('api/institution/', include('institution_api.urls'), name='institution'),
     path('api/pastoral_group/', include('pastoral_group_api.urls'), name='pastoral_group'),
     path('api/pastoral_member/', include('pastoral_member_api.urls'), name='pastoral_member'),

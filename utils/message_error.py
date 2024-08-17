@@ -17,19 +17,25 @@ class ErrorMessage:
     # ERROR
     def error_size(self, objecto: str) -> str:
         return f'Erro {objecto} não válido.'
+    def error_status(self, objecto: str) -> str:
+        return f'Erro! Estado do(a) {objecto} deve ser diferente de criado.'
     def error_payment(self, objecto: str) -> str:
         return f'Erro! valor do {objecto} inválido.'
     def date_formate(self, objecto: str) -> str:
         return f'Erro formato da {objecto} não válido.'
     def date_error(self, date_start: str, date_end: str) -> str:
         return f'Erro a data inicial {date_start} não pode ser maior que a data final {date_end}.'
+    def activity_error(self, objecto: str) -> str:
+        return f'Erro! Não é possível eliminar porque a actividade {objecto} já tem elementos inscritos.'
+    def activity_error_log(self, objecto: str, qtd: int) -> str:
+        return f'Erro! Não é possível eliminar porque a actividade {objecto} já tem {qtd} elementos inscritos.'
     
     # EXISTS 
     def exists(self, objecto: str) -> str:
-        return f'{objecto} já se encontra em uso.'
+        return f'{objecto} já se encontra registado (a).'
     
     def exists_log(self, objecto: str) -> str:
-        return f'{objecto} já se encontra em uso.'
+        return f'{objecto} já se encontra registado (a).'
     
     
     # INSERT

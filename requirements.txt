@@ -9,6 +9,7 @@ uvicorn[standard]
 psycopg2                        # Conector da BD Postgres
 psycopg2-binary
 pika                            # RabbitMQ 
+pytest                          # Testes em Python
 #pandas
 #mod_wsgi
 #Waitress
