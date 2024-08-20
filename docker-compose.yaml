@@ -1,0 +1,53 @@
+
+services:
+  db:    
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    #user: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./data/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: db_pastoral
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - nt_pastoral_ucan
+
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pastoralucan-web
+    container_name: pastoral_api
+    command: python /app/manage.py runserver 0.0.0.0:8000
+    #command: "python /app/manage.py gunicorn --bind 0.0.0.0:8000 pastoral_university.wsgi:application"
+    #command: sh -c "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 pastoral_university.wsgi:application"
+    restart: always
+    ports:
+      - "8001:8000"
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - logs:/app/logs #/var/lib/postgresql/data
+    depends_on:
+      - db
+    networks:
+      - nt_pastoral_ucan
+volumes:
+  postgres_data:
+  logs:
+networks:
+  nt_pastoral_ucan:
+    driver: bridge

@@ -90,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pastoral_university.wsgi.application'
 
 
-# Database
+# Database 
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
@@ -99,7 +99,8 @@ DATABASES = {
        'NAME': 'db_pastoral',
        'USER': 'postgres',
        'PASSWORD': 'postgres',
-       'HOST': 'localhost',
+       'HOST': 'db',
+       #'HOST': 'localhost',
        'PORT': '5432',
     }
 }
@@ -156,7 +157,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             #'filename': '/var/log/pastoral.log',
-            'filename': 'pastoral.log',
+            'filename': 'logs/pastoral.log',
             #'maxBytes': 1024*1024*5, # 5MB
             #'backupCount': 5,
             'formatter': 'verbose',

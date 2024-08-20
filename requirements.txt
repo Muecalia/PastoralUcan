@@ -10,6 +10,7 @@ psycopg2                        # Conector da BD Postgres
 psycopg2-binary
 pika                            # RabbitMQ 
 pytest                          # Testes em Python
+pytest-django
 #pandas
 #mod_wsgi
 #Waitress

@@ -70,7 +70,7 @@ class SavePastoralActivitySerializer(serializers.Serializer):
         pastoral_activity.delete()
         print(publication_serializer.errors)
         return None
-     
+
 
 class ListPastoralActivitySerializer(serializers.ModelSerializer):
     type_activity = serializers.SlugRelatedField(queryset=TypeActivity.objects.all(), slug_field='name')
@@ -145,7 +145,7 @@ class UpdatePastoralActivitySerializer(serializers.Serializer):
             return instance       
         
         return publication_serializer.errors
-   
+
 
 class UpdatePastoralActivityStatusSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -183,4 +183,3 @@ class UpdatePastoralActivityStatusSerializer(serializers.ModelSerializer):
         
         instance.save()
         return instance
- 
